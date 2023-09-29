@@ -1,11 +1,11 @@
-import { SignupPage } from './Pages/Signup/SignupPage';
+import {PostPage} from './Pages/Post/PostPage'
 import { GlobalStyle } from './globalStyled';
 
 function App() {
   return (
     <div>
       <GlobalStyle/>
-      <SignupPage/>
+      <PostPage/>
     </div>
   );
 }

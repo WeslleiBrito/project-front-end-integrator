@@ -1,4 +1,4 @@
-import {Main, Title, FormSignup, InputNickname, InputEmail, InputPassword, ContractText, Link, CheckTerms, LableCheck} from './SignupStyle'
+import {Main, Title, FormSignup, InputNickname, InputEmail, InputPassword, ContractText, Link, CheckTerms, LableCheck, ButtonRegister} from './SignupStyle'
 import {Header} from '../../components/Header/Header'
 
 export const SignupPage = () => {
@@ -18,6 +18,7 @@ export const SignupPage = () => {
                 </ContractText>
                 <CheckTerms id='checkTerms'/>
                 <LableCheck htmlFor='checkTerms'>Eu concordo em receber emails sobre coisas legais no Labeddit</LableCheck>
+                <ButtonRegister value={"Cadastrar"}/>
             </FormSignup>
         </Main>
     )

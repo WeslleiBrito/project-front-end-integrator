@@ -26,5 +26,8 @@ export const Link = styled.a`
 
 export const CheckTerms = styled.input.attrs({type: "checkbox"})`
 `
+
 export const LableCheck = styled.label`
 `
+
+export const ButtonRegister = styled.input.attrs({type: "button"})``
