@@ -1,0 +1,1 @@
+export const BASEURL = "https://project-integrator-labeddit.onrender.com"

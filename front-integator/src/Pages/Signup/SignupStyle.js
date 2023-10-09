@@ -28,3 +28,6 @@ export const CheckTerms = styled.input.attrs({type: "checkbox"})`
 `
 export const LableCheck = styled.label`
 `
+
+export const Register = styled.button.attrs({type: "submit"})`
+`

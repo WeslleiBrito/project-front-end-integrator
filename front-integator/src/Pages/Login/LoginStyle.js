@@ -19,7 +19,7 @@ export const InputEmail = styled.input.attrs({type: "email"})`
 export const InputPassword = styled.input.attrs({type: "password"})`
 `
 
-export const ButtonContinue = styled.input.attrs({type: 'submit'})`
+export const ButtonContinue = styled.button.attrs({type: 'submit'})`
 `
 
 export const ButtonCreateAccount = styled.button`
