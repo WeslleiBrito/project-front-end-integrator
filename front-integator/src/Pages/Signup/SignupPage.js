@@ -1,4 +1,5 @@
 import {Main, Title, FormSignup, InputNickname, InputEmail, InputPassword, ContractText, Link, CheckTerms, LableCheck, Register} from './SignupStyle'
+import React from 'react';
 import {Header} from '../../components/Header/Header'
 import { useForm } from '../../hooks/useForm'
 import axios, { AxiosError } from "axios";

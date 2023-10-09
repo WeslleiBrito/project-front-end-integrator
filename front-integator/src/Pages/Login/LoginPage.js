@@ -1,11 +1,15 @@
 import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount} from './LoginStyle'
+import React from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
 import { BASEURL } from '../../constants/BASEURL';
 import { useForm } from '../../hooks/useForm';
+import { goSignup } from '../../Routes/coordinator';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
+    const navigate = useNavigate()
 
     const login = async (event) => {
         event.preventDefault()
@@ -42,7 +46,7 @@ export const LoginPage = () => {
                 <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange}/>
                 <ButtonContinue>Continuar</ButtonContinue>
             </FormLogin>
-            <ButtonCreateAccount>Crie uma conta!</ButtonCreateAccount>
+            <ButtonCreateAccount onClick={() => {goSignup(navigate)}}>Crie uma conta!</ButtonCreateAccount>
         </Main>
     )
 }
