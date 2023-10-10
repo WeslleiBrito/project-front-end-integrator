@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LoginPage } from '../Pages/Login/LoginPage'
 import { SignupPage } from '../Pages/Signup/SignupPage'
 import { PostPage } from '../Pages/Post/PostPage'
+import { CommentPage } from '../Pages/Comment/CommentPage'
 
 export const Router = () => {
 
@@ -12,6 +13,7 @@ export const Router = () => {
                 <Route index element={<LoginPage />} />
                 <Route path='/user/signup' element={<SignupPage />} />
                 <Route path='/post' element={<PostPage />} />
+                <Route path='/comment/post/:id' element={<CommentPage />} />
             </Routes>
         </BrowserRouter>
     )
