@@ -2,7 +2,7 @@ import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue,
 import React from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
-import { BASEURL } from '../../constants/BASEURL';
+import { BASE_URL } from '../../constants/BASEURL';
 import { useForm } from '../../hooks/useForm';
 import { goPost, goSignup } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +27,7 @@ export const LoginPage = () => {
 
         try {
             const result = await axios.post(
-                BASEURL + '/users/login',
+                BASE_URL + '/users/login',
                 body
             )
             

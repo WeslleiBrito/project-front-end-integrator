@@ -1,52 +1,50 @@
 import {Main, FormPost, InputContent, ButtonPost, ListPost} from './PostStyle'
 import {Comment} from '../../components/comment/Comment'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { goLogin } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import axios, { AxiosError } from 'axios';
-import { BASEURL } from '../../constants/BASEURL';
+import { BASE_URL } from '../../constants/BASEURL';
+import { useContext } from "react";
+import { PostsContext } from '../../context/PostsContext';
+import { Header } from '../../components/Header/Header'
 
 export const PostPage = () => {
 
+    const context = useContext(PostsContext)
+    const {posts, loading } = context
+
+    console.log(posts);
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
-    const [postsApi, setPostApi] = useState([])
-
+   
     useEffect(() => {
         if(!token){
             goLogin(navigate)
         }
     }, [token, navigate])
 
-    useEffect(() => {
-
-       
-        const getPosts = async () => {
-            try {
-                const header = {
-                    headers: {
-                        authorization: token
+    const MainPosts = () => {
+        
+        return(
+            <Main>
+                <FormPost onSubmit={createPost}>
+                    <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange}/>
+                    <ButtonPost value={"Postar"}/>
+                </FormPost>
+                <ListPost>
+                    {
+                        posts.map(post => {
+                            return (
+                                <Comment key={post.id} id={post.id} name={post.creator.name} content={post.content} numberLike={post.like - post.dislike} numberComment={post.amountComments} comments={post.comments}/>
+                            )
+                        })
                     }
-                }
-        
-                const result = await axios.get(
-                    BASEURL + "/post",
-                    header
-                )
-                
-                setPostApi(result.data)
-            } catch (error) {
-                console.log(error)
-            }
-            
-        }
-
-        if(token){
-            getPosts()
-        }
-        
-    }, [token])
+                </ListPost>
+            </Main>
+        )
+    }
   
     const [form, onChange] = useForm({ content: ""})
 
@@ -65,18 +63,16 @@ export const PostPage = () => {
             }
 
             await axios.post(
-                BASEURL + '/post',
+                BASE_URL + '/post',
                 body,
                 header
                 
             )
             
-            const result = await axios.get(
-                BASEURL + "/post",
+            await axios.get(
+                BASE_URL + "/post",
                 header
             )
-            
-            setPostApi(result.data)
 
         } catch (error) {
             if(error instanceof AxiosError){
@@ -89,20 +85,9 @@ export const PostPage = () => {
     }
 
     return(
-        <Main>
-            <FormPost onSubmit={createPost}>
-                <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange}/>
-                <ButtonPost value={"Postar"}/>
-            </FormPost>
-            <ListPost>
-                {
-                    postsApi ? postsApi.map(post => {
-                        return (
-                            <Comment key={post.id} id={post.id} name={post.creator.name} content={post.content} numberLike={post.like - post.dislike} numberComment={post.amountComments} comments={post.comments}/>
-                        )
-                    }): <></>
-                }
-            </ListPost>
-        </Main>
+        <>
+            <Header/>
+            {loading ? <></> : MainPosts()}
+        </>
     )
 }

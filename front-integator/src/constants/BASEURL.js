@@ -1,1 +1,1 @@
-export const BASEURL = "https://project-integrator-labeddit.onrender.com"
+export const BASE_URL = "https://project-integrator-labeddit.onrender.com"

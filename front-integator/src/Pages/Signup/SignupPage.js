@@ -3,7 +3,7 @@ import React from 'react';
 import {Header} from '../../components/Header/Header'
 import { useForm } from '../../hooks/useForm'
 import axios, { AxiosError } from "axios";
-import {BASEURL} from '../../constants/BASEURL.js'
+import {BASE_URL} from '../../constants/BASEURL.js'
 
 
 export const SignupPage = () => {
@@ -21,7 +21,7 @@ export const SignupPage = () => {
 
         try {
             const result = await axios.post(
-                BASEURL + "/users/signup",
+                BASE_URL + "/users/signup",
                 body
             )
             
