@@ -5,8 +5,8 @@ import {Item, NameCreator, Content, SectionLike, Like, NumberLike, DisLike, Comm
 
 export const Comment = (props) => {
 
-    const {id, name, content, numberLike, numberComment, coments} = props
-
+    const {id, name, content, numberLike, numberComment, comments} = props
+    console.log(comments);
     return(
         <Item id={id}>
             <NameCreator>{name}</NameCreator>
