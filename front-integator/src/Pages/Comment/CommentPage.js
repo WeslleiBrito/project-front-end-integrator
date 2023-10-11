@@ -7,6 +7,9 @@ import { CommentIcon, Content, DisLike, Like, NameCreator, NumberComments, Numbe
 import { Comment } from "../../components/comment/Comment";
 import { goComment } from "../../Routes/coordinator";
 import { useNavigate } from 'react-router-dom';
+import axios, { AxiosError } from 'axios'
+import { BASE_URL } from "../../constants/BASEURL";
+import { useForm } from "../../hooks/useForm";
 
 export const CommentPage = () => {
     const pathParams = useParams();
@@ -16,8 +19,40 @@ export const CommentPage = () => {
 
     const post = posts.find((item) => item.id === pathParams.id)
  
+    const [form, onChange] = useForm({ content: ""})
+
+    const createComment = async (event) => {
+        event.preventDefault()
+
+        try {
+
+            const token = localStorage.getItem('token')
+
+            const header = {
+                headers: {
+                    authorization: token
+                    
+                }
+            }
+
+
+            await axios.post(
+                BASE_URL + `/comment/post/${post.id}`,
+                {content: form.content},
+                header
+            )
+            alert("Comentário criado com sucesso")
+        } catch (error) {
+            if(error instanceof AxiosError){
+                alert(error.response.data)
+
+            }
+        }
+    }
+
     if(post){
         const { content, creator, like, dislike, amountComments, comments } = post
+
         return (
             <>
                 <Header />
@@ -33,8 +68,8 @@ export const CommentPage = () => {
                         <CommentIcon goComments={goComment} navigate={navigate} id={post.id}/>
                         <NumberComments>{amountComments}</NumberComments>
                     </SectionPost>
-                    <FormComment>
-                        <InputContent placeholder="Adicionar comentário" />
+                    <FormComment onSubmit={createComment}>
+                        <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content}/>
                         <ButtonPost/>
                     </FormComment>
                     <ListComment>
