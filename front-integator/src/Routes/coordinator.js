@@ -1,6 +1,6 @@
 
 export const goLogin = (navigate) => {
-    navigate('/')
+    navigate('/user/login')
 }
 
 export const goSignup = (navigate) => {
@@ -8,9 +8,9 @@ export const goSignup = (navigate) => {
 }
 
 export const goPost = (navigate) => {
-    navigate('/post')
+    navigate('/')
 }
 
-export const goComment = (navigate) => {
-    navigate('/comment/post/:id')
+export const goComment = (navigate, id) => {
+    navigate(`/comment/post/${id}`)
 }

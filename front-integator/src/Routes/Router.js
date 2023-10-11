@@ -10,9 +10,9 @@ export const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<LoginPage />} />
+                <Route index element={<PostPage />} />
                 <Route path='/user/signup' element={<SignupPage />} />
-                <Route path='/post' element={<PostPage />} />
+                <Route path='/user/login' element={<LoginPage />} />
                 <Route path='/comment/post/:id' element={<CommentPage />} />
             </Routes>
         </BrowserRouter>

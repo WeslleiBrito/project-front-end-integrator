@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { BASE_URL } from '../constants/BASEURL';
 
+
 export const useFechtPosts = () => {
     const [initial, setInitial] = useState([])
     const [loading, setLoading] = useState(true)
-    
+
     useEffect(() => {
 
         const getPosts = async () => {

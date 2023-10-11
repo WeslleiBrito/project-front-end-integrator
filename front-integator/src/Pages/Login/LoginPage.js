@@ -11,12 +11,6 @@ export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
     const navigate = useNavigate()
 
-    const token = localStorage.getItem('token')
-
-    if(token){
-        goPost(navigate)
-    }
-
     const login = async (event) => {
         event.preventDefault()
         

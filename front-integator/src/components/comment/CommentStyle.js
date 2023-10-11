@@ -32,10 +32,11 @@ export const DisLike = () => {
     )
 }
 
-export const CommentIcon = () => {
+export const CommentIcon = (props) => {
+    const {goComments, navigate, id, status} = props
     return(
-        <button>
-            <img alt="icon" src={commentIconImage}/>
+        <button style={{display: status}}>
+            <img alt="icon" src={commentIconImage} onClick={() => {goComments(navigate, id)}}/>
         </button>
     )
 }

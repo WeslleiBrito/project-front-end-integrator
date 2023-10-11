@@ -1,14 +1,16 @@
 import React from 'react';
 import {Item, NameCreator, Content, SectionLike, Like, NumberLike, DisLike, CommentIcon, NumberComments} from './CommentStyle'
-
+import { useNavigate } from 'react-router-dom';
+import { goComment } from '../../Routes/coordinator';
 
 
 export const Comment = (props) => {
 
-    const {id, name, content, numberLike, numberComment} = props
-    console.log(props);
+    const {idPost, idComment, name, content, numberLike, numberComment} = props
+    const navigate = useNavigate()
+   
     return(
-        <Item id={id}>
+        <Item id={idComment}>
             <NameCreator>{name}</NameCreator>
             <Content>{content}</Content>
             <SectionLike>
@@ -16,7 +18,7 @@ export const Comment = (props) => {
                 <NumberLike>{numberLike}</NumberLike>
                 <DisLike/>
             </SectionLike>
-            <CommentIcon/>
+            <CommentIcon goComments={goComment} navigate={navigate} id={idPost} status={idComment ? "none" : "flex"}/>
             <NumberComments>{numberComment}</NumberComments>
         </Item>
     )

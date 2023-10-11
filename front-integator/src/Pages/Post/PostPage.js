@@ -15,10 +15,9 @@ export const PostPage = () => {
     const context = useContext(PostsContext)
     const {posts, loading } = context
 
-    console.log(posts);
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
-   
+
     useEffect(() => {
         if(!token){
             goLogin(navigate)
@@ -37,7 +36,7 @@ export const PostPage = () => {
                     {
                         posts.map(post => {
                             return (
-                                <Comment key={post.id} id={post.id} name={post.creator.name} content={post.content} numberLike={post.like - post.dislike} numberComment={post.amountComments} comments={post.comments}/>
+                                <Comment key={post.id} idPost={post.id} name={post.creator.name} content={post.content} numberLike={post.like - post.dislike} numberComment={post.amountComments} comments={post.comments}/>
                             )
                         })
                     }
