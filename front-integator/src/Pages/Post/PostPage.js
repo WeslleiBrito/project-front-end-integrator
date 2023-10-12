@@ -4,8 +4,6 @@ import React, { useEffect } from 'react';
 import { goLogin } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
-import axios, { AxiosError } from 'axios';
-import { BASE_URL } from '../../constants/BASEURL';
 import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
 import { Header } from '../../components/Header/Header'
@@ -13,10 +11,10 @@ import { Header } from '../../components/Header/Header'
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
-    const {posts, loading } = context
-
+    const {posts, loading, createPost } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
+    const [form, onChange] = useForm({ content: ""})
 
     useEffect(() => {
         if(!token){
@@ -28,7 +26,7 @@ export const PostPage = () => {
         
         return(
             <Main>
-                <FormPost onSubmit={createPost}>
+                <FormPost onSubmit={(event) => {createPost(event, form.content)}}>
                     <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange}/>
                     <ButtonPost value={"Postar"}/>
                 </FormPost>
@@ -45,43 +43,7 @@ export const PostPage = () => {
         )
     }
   
-    const [form, onChange] = useForm({ content: ""})
-
-    const createPost = async (event) => {
-        event.preventDefault()
-        
-        try {
-            const header = {
-                headers: {
-                    authorization: token
-                }
-            }
-
-            const body = {
-                content: form.content
-            }
-
-            await axios.post(
-                BASE_URL + '/post',
-                body,
-                header
-                
-            )
-            
-            await axios.get(
-                BASE_URL + "/post",
-                header
-            )
-
-        } catch (error) {
-            if(error instanceof AxiosError){
-                console.log(error.response.data);
-
-            }else{
-                alert(error)
-            }
-        }
-    }
+    
 
     return(
         <>
