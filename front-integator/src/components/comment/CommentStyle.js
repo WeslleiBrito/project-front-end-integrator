@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import React from 'react';
 import { RxThickArrowUp, RxThickArrowDown } from "react-icons/rx";
-import commentIconImage from '../../assets/icons/conversation.png'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faMessage } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+library.add(faMessage);
 
 export const Item = styled.li`
 `
@@ -16,28 +20,29 @@ export const SectionLike = styled.section`
 
 export const Like = () => {
 
-    return(
+    return (
         <button>
-            <RxThickArrowUp/>
+            <RxThickArrowUp />
         </button>
     )
 }
 
 
 export const DisLike = () => {
-    return(
+    return (
         <button>
-            <RxThickArrowDown/>
+            <RxThickArrowDown />
         </button>
     )
 }
 
 export const CommentIcon = (props) => {
-    const {goComments, navigate, id, status} = props
-    return(
-        <button style={{display: status}}>
-            <img alt="icon" src={commentIconImage} onClick={() => {goComments(navigate, id)}}/>
-        </button>
+    const { goComments, navigate, id, status } = props
+    return (
+        <FontAwesomeIcon icon={faMessage}
+            onClick={() => { goComments(navigate, id) }}
+            style={{ display: status, width: "2vw", border: "none" }}
+        />
     )
 }
 
