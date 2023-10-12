@@ -27,7 +27,7 @@ export const PostPage = () => {
         return(
             <Main>
                 <FormPost onSubmit={(event) => {createPost(event, form.content)}}>
-                    <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange}/>
+                    <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required/>
                     <ButtonPost value={"Postar"}/>
                 </FormPost>
                 <ListPost>
