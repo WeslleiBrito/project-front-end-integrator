@@ -14,7 +14,7 @@ export const PostPage = () => {
     const { posts, loading, createPost, likeDislikePost } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
-    const [form, onChange] = useForm({ content: "" })
+    const [form, onChange, clearForm] = useForm({ content: "" })
 
     useEffect(() => {
         if (!token) {
@@ -26,7 +26,7 @@ export const PostPage = () => {
 
         return (
             <Main>
-                <FormPost onSubmit={(event) => { createPost(event, form.content) }}>
+                <FormPost onSubmit={(event) => { createPost(event, form.content); clearForm()}}>
                     <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required />
                     <ButtonPost value={"Postar"} />
                 </FormPost>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
 import { TbArrowBigUp, TbArrowBigDown } from "react-icons/tb";
-import { faMessage } from '@fortawesome/free-solid-svg-icons';
 import { BiMessage } from "react-icons/bi";
 
 
@@ -34,7 +33,7 @@ export const DisLike = (props) => {
 export const CommentIcon = (props) => {
     const { goComments, navigate, id, status } = props
     return (
-        <BiMessage icon={faMessage}
+        <BiMessage
             onClick={() => { goComments(navigate, id) }}
             style={{ display: status, width: "2vw", border: "none", background: "trasparent" }}
         />

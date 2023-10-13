@@ -11,6 +11,16 @@ export const useForm = (initialState) => {
         setForm({ ...form, [name]: value })
     }
 
-    return [form, onChange]
+    const clearForm = () => {
+        const clearedForm = {}
+
+        Object.entries(form).forEach((item) => {
+            const [key] = item
+            clearedForm[key] = ""
+        })
+        setForm(clearedForm)
+    }
+
+    return [form, onChange, clearForm]
 
 }

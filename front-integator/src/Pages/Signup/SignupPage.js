@@ -8,7 +8,7 @@ import {BASE_URL} from '../../constants/BASEURL.js'
 
 export const SignupPage = () => {
 
-    const [form, onChange] = useForm({ name: "", email: "", password: ""})
+    const [form, onChange, clearForm] = useForm({ name: "", email: "", password: ""})
 
     const signup = async (event) => {
         event.preventDefault()
@@ -25,12 +25,15 @@ export const SignupPage = () => {
                 body
             )
             
+            clearForm()
             alert(result.data.message)
 
         } catch (error) {
 
             if(error instanceof AxiosError){
-                alert(error.response.data)
+                error.response.data.forEach(element => {
+                    alert(element.message)
+                });
             }else{
                 alert(error)
             }
@@ -44,7 +47,7 @@ export const SignupPage = () => {
             <Title>
                 {"Olá, boas vindas ao LabEddit ;)"}  
             </Title>
-            <FormSignup onSubmit={signup}>
+            <FormSignup onSubmit={(event) => {signup(event)}}>
                 <InputNickname placeholder="Apelido" id='name' name='name' value={form.name} onChange={onChange} required/>
                 <InputEmail placeholder='E-mail' id='email' name='email' value={form.email} onChange={onChange} required/>
                 <InputPassword placeholder='Senha' id='password' name='password' value={form.password} onChange={onChange} required/>

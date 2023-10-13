@@ -21,7 +21,8 @@ export const CommentPage = () => {
         const post = posts.find((item) => item.id === pathParams.id)
 
         const { content, creator, like, dislike, amountComments, comments } = post
-     
+        
+  
         return (
             <>
                 <Header />
@@ -37,7 +38,7 @@ export const CommentPage = () => {
                         <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
                         <NumberComments>{amountComments}</NumberComments>
                     </SectionPost>
-                    <FormComment onSubmit={(event) => { createComment(event, pathParams.id, form.content) }}>
+                    <FormComment onSubmit={(event) => { createComment(event, pathParams.id, form.content); onChange({ target: { name: "content", value: "" } })}}>
                         <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} />
                         <ButtonPost />
                     </FormComment>
