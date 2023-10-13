@@ -58,7 +58,12 @@ export const GlobalState = (props) => {
             setPosts(newPosts.data)
 
         } catch (error) {
-            alert(error)
+            if(error instanceof AxiosError){
+                alert(error.response.data)
+            }else{
+                alert(error)
+            }
+            
         }
     }
 
@@ -100,12 +105,76 @@ export const GlobalState = (props) => {
         }
     }
 
+    const likeDislikePost = async (id, action) => {
+        
+        try {
+
+            const token = localStorage.getItem('token')
+            const header = {
+                headers: {
+                    authorization: token
+                    
+                }
+            }
+
+            await axios.post(
+                BASE_URL + `/posts/${id}/like`,
+                {like: action},
+                header
+            )
+            
+            const newPosts = await getAllPosts()
+            
+            setPosts(newPosts.data)
+
+        } catch (error) {
+            if(error instanceof AxiosError){
+                alert(error.response.data)
+            }else{
+                alert(error)
+            }
+        }
+    }
+
+    const likeDislikeComment = async (id, action) => {
+        
+        try {
+
+            const token = localStorage.getItem('token')
+            const header = {
+                headers: {
+                    authorization: token
+                    
+                }
+            }
+
+            await axios.post(
+                BASE_URL + `/comments/${id}/like`,
+                {like: action},
+                header
+            )
+            
+            const newPosts = await getAllPosts()
+            
+            setPosts(newPosts.data)
+
+        } catch (error) {
+            if(error instanceof AxiosError){
+                alert(error.response.data)
+            }else{
+                alert(error)
+            }
+        }
+    }
+
     const context = {
         posts,
         setPost,
         createComment,
         loading,
-        createPost
+        createPost,
+        likeDislikePost,
+        likeDislikeComment
     }
 
     return(

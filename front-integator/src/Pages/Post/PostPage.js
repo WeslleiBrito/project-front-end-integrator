@@ -1,5 +1,5 @@
-import {Main, FormPost, InputContent, ButtonPost, ListPost} from './PostStyle'
-import {Comment} from '../../components/comment/Comment'
+import { Main, FormPost, InputContent, ButtonPost, ListPost } from './PostStyle'
+import { Comment } from '../../components/comment/Comment'
 import React, { useEffect } from 'react';
 import { goLogin } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
@@ -11,30 +11,39 @@ import { Header } from '../../components/Header/Header'
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
-    const {posts, loading, createPost } = context
+    const { posts, loading, createPost, likeDislikePost } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
-    const [form, onChange] = useForm({ content: ""})
+    const [form, onChange] = useForm({ content: "" })
 
     useEffect(() => {
-        if(!token){
+        if (!token) {
             goLogin(navigate)
         }
     }, [token, navigate])
 
     const MainPosts = () => {
-        
-        return(
+
+        return (
             <Main>
-                <FormPost onSubmit={(event) => {createPost(event, form.content)}}>
-                    <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required/>
-                    <ButtonPost value={"Postar"}/>
+                <FormPost onSubmit={(event) => { createPost(event, form.content) }}>
+                    <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required />
+                    <ButtonPost value={"Postar"} />
                 </FormPost>
                 <ListPost>
                     {
                         posts.map(post => {
+                            
                             return (
-                                <Comment key={post.id} idPost={post.id} name={post.creator.name} content={post.content} numberLike={post.like - post.dislike} numberComment={post.amountComments} comments={post.comments}/>
+                                <Comment key={post.id}
+                                    idPost={post.id}
+                                    name={post.creator.name}
+                                    content={post.content}
+                                    numberLike={post.like}
+                                    numberComment={post.amountComments}
+                                    comments={post.comments}
+                                    likeDislike={likeDislikePost}
+                                />
                             )
                         })
                     }
@@ -42,12 +51,12 @@ export const PostPage = () => {
             </Main>
         )
     }
-  
-    
 
-    return(
+
+
+    return (
         <>
-            <Header/>
+            <Header />
             {loading ? <></> : MainPosts()}
         </>
     )

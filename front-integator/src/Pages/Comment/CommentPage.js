@@ -12,16 +12,16 @@ import { useForm } from "../../hooks/useForm";
 export const CommentPage = () => {
     const pathParams = useParams();
     const context = useContext(PostsContext)
-    const { posts, createComment } = context
+    const { posts, createComment, likeDislikePost, likeDislikeComment } = context
     const navigate = useNavigate()
-    
-    const [form, onChange] = useForm({ content: ""})
-  
-    if(posts.length > 0){
+
+    const [form, onChange] = useForm({ content: "" })
+
+    if (posts.length > 0) {
         const post = posts.find((item) => item.id === pathParams.id)
 
         const { content, creator, like, dislike, amountComments, comments } = post
-
+     
         return (
             <>
                 <Header />
@@ -30,22 +30,30 @@ export const CommentPage = () => {
                         <NameCreator>{creator.name}</NameCreator>
                         <Content>{content}</Content>
                         <SectionLike>
-                            <Like />
-                            <NumberLike>{like - dislike}</NumberLike>
-                            <DisLike />
+                            <Like likeDislike={likeDislikePost} id={pathParams.id} />
+                            <NumberLike>{like - dislike >= 0 ? like - dislike : 0}</NumberLike>
+                            <DisLike likeDislike={likeDislikePost} id={pathParams.id} />
                         </SectionLike>
-                        <CommentIcon goComments={goComment} navigate={navigate} id={post.id}/>
+                        <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
                         <NumberComments>{amountComments}</NumberComments>
                     </SectionPost>
-                    <FormComment onSubmit={(event) => {createComment(event, pathParams.id, form.content)}}>
-                        <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content}/>
-                        <ButtonPost/>
+                    <FormComment onSubmit={(event) => { createComment(event, pathParams.id, form.content) }}>
+                        <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} />
+                        <ButtonPost />
                     </FormComment>
                     <ListComment>
                         {
                             comments.map((comment) => {
                                 return (
-                                    <Comment key={comment.id} idComment={comment.id} idPost={post.id} name={creator.name} content={comment.content} numberLike={comment.like - comment.dislike} numberComment={comment.amountComments}/>
+                                    <Comment key={comment.id}
+                                        idComment={comment.id}
+                                        idPost={post.id}
+                                        name={creator.name}
+                                        content={comment.content}
+                                        numberLike={comment.like}
+                                        numberComment={comment.amountComments}
+                                        likeDislike={likeDislikeComment}
+                                    />
                                 )
                             })
                         }
@@ -54,5 +62,5 @@ export const CommentPage = () => {
             </>
         )
     }
-    
+
 } 

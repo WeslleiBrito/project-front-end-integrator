@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import React from 'react';
-import { RxThickArrowUp, RxThickArrowDown } from "react-icons/rx";
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { TbArrowBigUp, TbArrowBigDown } from "react-icons/tb";
 import { faMessage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BiMessage } from "react-icons/bi";
 
-library.add(faMessage);
 
 export const Item = styled.li`
 `
@@ -18,30 +16,27 @@ export const Content = styled.p`
 export const SectionLike = styled.section`
 `
 
-export const Like = () => {
-
+export const Like = (props) => {
+    const { likeDislike, id } = props
     return (
-        <button>
-            <RxThickArrowUp />
-        </button>
+        <TbArrowBigUp onClick={() => likeDislike(id, true)}/>
     )
 }
 
 
-export const DisLike = () => {
+export const DisLike = (props) => {
+    const { likeDislike, id } = props
     return (
-        <button>
-            <RxThickArrowDown />
-        </button>
+        <TbArrowBigDown onClick={() => likeDislike(id, false)}/>
     )
 }
 
 export const CommentIcon = (props) => {
     const { goComments, navigate, id, status } = props
     return (
-        <FontAwesomeIcon icon={faMessage}
+        <BiMessage icon={faMessage}
             onClick={() => { goComments(navigate, id) }}
-            style={{ display: status, width: "2vw", border: "none" }}
+            style={{ display: status, width: "2vw", border: "none", background: "trasparent" }}
         />
     )
 }
