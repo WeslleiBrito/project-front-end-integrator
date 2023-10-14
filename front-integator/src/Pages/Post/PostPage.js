@@ -18,9 +18,9 @@ export const PostPage = () => {
 
     useEffect(() => {
         if (!token) {
-            console.log("redirecionei");
             goLogin(navigate)
         }
+        
     }, [token, navigate])
 
     const MainPosts = () => {
