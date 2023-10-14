@@ -15,7 +15,7 @@ export const CommentPage = () => {
     const { posts, createComment, likeDislikePost, likeDislikeComment } = context
     const navigate = useNavigate()
 
-    const [form, onChange] = useForm({ content: "" })
+    const [form, onChange, clearForm ] = useForm({ content: "" })
 
     if (posts.length > 0) {
         const post = posts.find((item) => item.id === pathParams.id)
@@ -25,7 +25,7 @@ export const CommentPage = () => {
   
         return (
             <>
-                <Header />
+                <Header namePage="comment"/>
                 <Main>
                     <SectionPost>
                         <NameCreator>{creator.name}</NameCreator>
@@ -38,7 +38,7 @@ export const CommentPage = () => {
                         <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
                         <NumberComments>{amountComments}</NumberComments>
                     </SectionPost>
-                    <FormComment onSubmit={(event) => { createComment(event, pathParams.id, form.content); onChange({ target: { name: "content", value: "" } })}}>
+                    <FormComment onSubmit={async (event) => { await createComment(event, pathParams.id, form.content); clearForm()}}>
                         <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} />
                         <ButtonPost />
                     </FormComment>

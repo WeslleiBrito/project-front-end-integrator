@@ -25,8 +25,10 @@ export const PostPage = () => {
     const MainPosts = () => {
 
         return (
-            <Main>
-                <FormPost onSubmit={(event) => { createPost(event, form.content); clearForm()}}>
+            <>
+                <Header namePage="post"/>
+                <Main>
+                <FormPost onSubmit={async (event) => { await createPost(event, form.content); clearForm()}}>
                     <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required />
                     <ButtonPost value={"Postar"} />
                 </FormPost>
@@ -49,6 +51,8 @@ export const PostPage = () => {
                     }
                 </ListPost>
             </Main>
+            </>
+            
         )
     }
 

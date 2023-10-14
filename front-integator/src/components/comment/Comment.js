@@ -11,7 +11,7 @@ export const Comment = (props) => {
    
     return(
         <Item id={idComment}>
-            <NameCreator>{name}</NameCreator>
+            <NameCreator>Enviado por: {name}</NameCreator>
             <Content>{content}</Content>
             <SectionLike>
                 <Like likeDislike={likeDislike} id={idPost && idComment ? idComment : idPost} />

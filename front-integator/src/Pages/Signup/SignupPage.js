@@ -4,11 +4,13 @@ import {Header} from '../../components/Header/Header'
 import { useForm } from '../../hooks/useForm'
 import axios, { AxiosError } from "axios";
 import {BASE_URL} from '../../constants/BASEURL.js'
-
+import { useNavigate } from 'react-router-dom';
+import { goLogin } from '../../Routes/coordinator';
 
 export const SignupPage = () => {
 
-    const [form, onChange, clearForm] = useForm({ name: "", email: "", password: ""})
+    const [form, onChange] = useForm({ name: "", email: "", password: ""})
+    const navigate = useNavigate()
 
     const signup = async (event) => {
         event.preventDefault()
@@ -20,13 +22,13 @@ export const SignupPage = () => {
         }
 
         try {
-            const result = await axios.post(
+
+            await axios.post(
                 BASE_URL + "/users/signup",
                 body
             )
             
-            clearForm()
-            alert(result.data.message)
+            goLogin(navigate)
 
         } catch (error) {
 
@@ -43,7 +45,7 @@ export const SignupPage = () => {
 
     return(
         <Main>
-            <Header></Header>
+            <Header namePage="signup"/>
             <Title>
                 {"Olá, boas vindas ao LabEddit ;)"}  
             </Title>
