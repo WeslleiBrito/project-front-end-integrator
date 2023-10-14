@@ -1,1 +1,1 @@
-export const BASE_URL = "https://project-integrator-labeddit.onrender.com"
+export const BASE_URL = "http://ec2-34-228-54-153.compute-1.amazonaws.com:3003"

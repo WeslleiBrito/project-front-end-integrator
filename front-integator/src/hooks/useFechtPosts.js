@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { BASE_URL } from '../constants/BASEURL';
+
 
 
 export const useFechtPosts = () => {
     const [initial, setInitial] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
 
@@ -25,7 +27,10 @@ export const useFechtPosts = () => {
                 setInitial(response.data)
                 setLoading(false)
             }).catch((error) => {
-                console.log(error)
+                if(error instanceof AxiosError){
+                    console.log(error.response.status);
+                }
+                setError(true)
                 setLoading(false)
             })
         }
@@ -33,5 +38,5 @@ export const useFechtPosts = () => {
         getPosts()
     }, [])
 
-    return {initial, loading}
+    return {initial, loading, error}
 }
