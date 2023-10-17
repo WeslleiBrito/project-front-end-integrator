@@ -11,6 +11,9 @@ export const Title = styled.p`
 `
 
 export const FormLogin = styled.form`
+    display: flex;
+    flex-direction: column;
+    
 `
 
 export const InputEmail = styled.input.attrs({type: "email"})`

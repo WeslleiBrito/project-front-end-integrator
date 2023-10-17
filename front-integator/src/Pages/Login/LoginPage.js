@@ -39,12 +39,13 @@ export const LoginPage = () => {
     }
     
     return(
+        
         <Main>
             <Logo alt='logo-labenu' src={logoLabenu}/>
             <Title>O projeto de rede social da Labenu</Title>
             <FormLogin onSubmit={login}>
-                <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange}/>
-                <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off'/>
+                <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange} required/>
+                <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off' required/>
                 <ButtonContinue>Continuar</ButtonContinue>
             </FormLogin>
             <ButtonCreateAccount onClick={() => {goSignup(navigate)}}>Crie uma conta!</ButtonCreateAccount>
