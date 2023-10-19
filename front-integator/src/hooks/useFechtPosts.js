@@ -3,7 +3,6 @@ import axios, { AxiosError } from 'axios';
 import { BASE_URL } from '../constants/BASEURL';
 
 
-
 export const useFechtPosts = () => {
     const [initial, setInitial] = useState([])
     const [loading, setLoading] = useState(true)
@@ -38,5 +37,9 @@ export const useFechtPosts = () => {
         getPosts()
     }, [])
 
-    return {initial, loading, error}
+    const handleSetError = () => {
+        setError(!error)
+    }
+
+    return {initial, loading, error, handleSetError}
 }

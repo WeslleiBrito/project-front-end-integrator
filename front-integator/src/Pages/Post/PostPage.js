@@ -11,17 +11,18 @@ import { Header } from '../../components/Header/Header'
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
-    const { posts, loading, createPost, likeDislikePost } = context
+    const { posts, loading, createPost, likeDislikePost, error } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
     const [form, onChange, clearForm] = useForm({ content: "" })
 
+ 
     useEffect(() => {
-        if (!token) {
+        if (!token || error) {
             goLogin(navigate)
         }
         
-    }, [token, navigate])
+    }, [token, error, navigate])
 
     const MainPosts = () => {
 
@@ -61,7 +62,6 @@ export const PostPage = () => {
 
     return (
         <>
-            <Header />
             {loading ? <></> : MainPosts()}
         </>
     )

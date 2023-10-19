@@ -4,12 +4,12 @@ import { GlobalStyle } from './globalStyled';
 
 function App() {
   return (
-    <div>
+    <>
       <GlobalStyle/>
       <GlobalState>
         <Router/>
       </GlobalState>
-    </div>
+    </>
   );
 }
 

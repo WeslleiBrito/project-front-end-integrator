@@ -6,10 +6,14 @@ import { BASE_URL } from '../../constants/BASEURL';
 import { useForm } from '../../hooks/useForm';
 import { goPost, goSignup } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { PostsContext } from '../../context/PostsContext';
 
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
     const navigate = useNavigate()
+    const context = useContext(PostsContext)
+    const { error, handleSetError } = context
 
     const login = async (event) => {
         event.preventDefault()
@@ -26,6 +30,11 @@ export const LoginPage = () => {
             )
             
             localStorage.setItem('token', result.data.token)
+
+            if(error){
+                handleSetError()
+            }
+
             goPost(navigate)
 
         } catch (error) {

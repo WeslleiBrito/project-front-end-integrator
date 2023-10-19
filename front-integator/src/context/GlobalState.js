@@ -5,12 +5,14 @@ import axios, { AxiosError } from "axios";
 import { BASE_URL } from "../constants/BASEURL";
 import { getAllPosts } from "../services/getAllPosts";
 
+
 export const GlobalState = (props) => {
 
-    const {initial, loading} = useFechtPosts()
+    const {initial, loading, error, handleSetError} = useFechtPosts()
     const token = localStorage.getItem('token')
     const [posts, setPosts] = useState([])
 
+    
     useEffect(() => {
         setPosts(initial)
     }, [initial])
@@ -174,7 +176,9 @@ export const GlobalState = (props) => {
         loading,
         createPost,
         likeDislikePost,
-        likeDislikeComment
+        likeDislikeComment,
+        error,
+        handleSetError
     }
 
     return(

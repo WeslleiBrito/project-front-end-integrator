@@ -1,5 +1,5 @@
-import { NavHeader, MiniLogo, ButtonEnter, ButtonLogout, Close } from './HeaderStyle'
-import miniLogo from '../../assets/img/logo-labenu.svg'
+import { NavHeaderPost, MiniLogo, ButtonEnter, ButtonLogout, Close, HeaderComponent } from './HeaderStyle'
+import miniLogo from '../../assets/img/mini-logo.svg'
 import { useNavigate } from 'react-router-dom';
 import { goLogin, goPost } from '../../Routes/coordinator';
 
@@ -18,26 +18,26 @@ export const Header = (props) => {
     }
 
     const configHeader = {
-        signup: <>
+        signup: <NavHeaderPost $post={page}>
             <MiniLogo alt='Logo labenu' src={miniLogo} />   
             <ButtonEnter onClick={() => goLogin(navigate)}>Entrar</ButtonEnter>
-        </>,
+        </NavHeaderPost>,
 
-        post: <>
+        post: <NavHeaderPost $post={page}>
             <MiniLogo alt='Logo labenu' src={miniLogo} />
             <ButtonLogout onClick={logout}>Logout</ButtonLogout>
-        </>,
+        </NavHeaderPost>,
 
-        comment: <>
+        comment: <NavHeaderPost>
             <Close closePage={closePage}/>
             <MiniLogo alt='Logo labenu' src={miniLogo} />
             <ButtonLogout onClick={logout}>Logout</ButtonLogout>
-        </>
+        </NavHeaderPost>
     }
 
     return (
-        <NavHeader>
+        <HeaderComponent $post={page}>
             {configHeader[page]}
-        </NavHeader>
+        </HeaderComponent>
     )
 }
