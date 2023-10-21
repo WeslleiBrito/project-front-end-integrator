@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { PostsContext } from "../../context/PostsContext";
 import { Header } from "../../components/Header/Header";
 import { Main, FormComment, InputContent, ButtonPost, ListComment, SectionPost } from "./commentStyle";
-import { CommentIcon, Content, DisLike, Like, NameCreator, NumberComments, NumberLike, SectionLike } from '../../components/comment/CommentStyle';
+import { CommentIcon, CommentSection, Content, DisLike, Like, NameCreator, NumberComments, NumberLike, SectionInterection, SectionLike } from '../../components/comment/CommentStyle';
 import { Comment } from "../../components/comment/Comment";
 import { goComment } from "../../Routes/coordinator";
 import { useNavigate } from 'react-router-dom';
@@ -30,13 +30,17 @@ export const CommentPage = () => {
                     <SectionPost>
                         <NameCreator>{creator.name}</NameCreator>
                         <Content>{content}</Content>
-                        <SectionLike>
-                            <Like likeDislike={likeDislikePost} id={pathParams.id} />
-                            <NumberLike>{like - dislike >= 0 ? like - dislike : 0}</NumberLike>
-                            <DisLike likeDislike={likeDislikePost} id={pathParams.id} />
-                        </SectionLike>
-                        <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
-                        <NumberComments>{amountComments}</NumberComments>
+                        <SectionInterection>
+                            <SectionLike>
+                                <Like likeDislike={likeDislikePost} id={pathParams.id} />
+                                <NumberLike>{like - dislike >= 0 ? like - dislike : 0}</NumberLike>
+                                <DisLike likeDislike={likeDislikePost} id={pathParams.id} />
+                            </SectionLike>
+                            <CommentSection>
+                                <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
+                                <NumberComments>{amountComments}</NumberComments>
+                            </CommentSection>
+                        </SectionInterection>
                     </SectionPost>
                     <FormComment onSubmit={async (event) => { await createComment(event, pathParams.id, form.content); clearForm()}}>
                         <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} />

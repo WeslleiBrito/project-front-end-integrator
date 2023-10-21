@@ -21,11 +21,13 @@ export const PostPage = () => {
         if (!token || error) {
             goLogin(navigate)
         }
-        
+
     }, [token, error, navigate])
 
+    
+    console.log(posts)
     const MainPosts = () => {
-
+        
         return (
             <>
                 <Header namePage="post"/>
@@ -57,7 +59,6 @@ export const PostPage = () => {
             
         )
     }
-
 
 
     return (

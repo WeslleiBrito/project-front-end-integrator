@@ -34,7 +34,7 @@ export const LoginPage = () => {
             if(error){
                 handleSetError()
             }
-
+            
             goPost(navigate)
 
         } catch (error) {
