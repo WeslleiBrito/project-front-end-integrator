@@ -6,7 +6,7 @@ export const getAllPosts = async () => {
 
     try {
         const token = localStorage.getItem('token')
-
+        console.log(token);
         if(!token){
             throw new Error('Refaça o login.')
         }
@@ -22,7 +22,7 @@ export const getAllPosts = async () => {
             header
         )
 
-        return result
+        return result.data
     } catch (error) {
 
         if(error instanceof AxiosError){

@@ -9,11 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
 
+
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
     const navigate = useNavigate()
     const context = useContext(PostsContext)
-    const { error, handleSetError } = context
+    const { error, handleSetError, setPost } = context
 
     const login = async (event) => {
         event.preventDefault()
@@ -34,7 +35,9 @@ export const LoginPage = () => {
             if(error){
                 handleSetError()
             }
-            
+
+            await setPost()
+
             goPost(navigate)
 
         } catch (error) {

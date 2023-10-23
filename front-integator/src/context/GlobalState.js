@@ -9,7 +9,6 @@ import { getAllPosts } from "../services/getAllPosts";
 export const GlobalState = (props) => {
 
     const {initial, loading, error, handleSetError} = useFechtPosts()
-    const token = localStorage.getItem('token')
     const [posts, setPosts] = useState([])
 
     
@@ -21,7 +20,7 @@ export const GlobalState = (props) => {
         try {
             const header = {
                 headers: {
-                    authorization: token
+                    authorization: localStorage.getItem('token')
                 }
             }
 
@@ -30,10 +29,10 @@ export const GlobalState = (props) => {
                 header
             )
 
-            setPosts(resut)
+            setPosts(resut.data)
 
         } catch (error) {
-            
+            console.log("Erro ao tentar setar");
         }
     }
 

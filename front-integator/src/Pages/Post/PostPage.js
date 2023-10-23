@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
 import { Header } from '../../components/Header/Header'
 
+
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
@@ -24,10 +25,10 @@ export const PostPage = () => {
 
     }, [token, error, navigate])
 
-    
-    console.log(posts)
+
     const MainPosts = () => {
         
+        console.log(posts);
         return (
             <>
                 <Header namePage="post"/>
