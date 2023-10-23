@@ -31,6 +31,7 @@ export const LoginPage = () => {
             )
             
             localStorage.setItem('token', result.data.token)
+            localStorage.setItem('idUser', result.data.idUser)
 
             if(error){
                 handleSetError()

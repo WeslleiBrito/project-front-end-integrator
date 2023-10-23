@@ -107,7 +107,7 @@ export const GlobalState = (props) => {
     }
 
     const likeDislikePost = async (id, action) => {
-        
+        console.log("fui chamado");
         try {
 
             const token = localStorage.getItem('token')
@@ -124,9 +124,7 @@ export const GlobalState = (props) => {
                 header
             )
             
-            const newPosts = await getAllPosts()
-            
-            setPosts(newPosts.data)
+            await setPost()
 
         } catch (error) {
             if(error instanceof AxiosError){

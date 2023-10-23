@@ -32,6 +32,8 @@ export const useFechtPosts = () => {
                 setError(true)
                 setLoading(false)
             })
+
+            
         }
 
         getPosts()

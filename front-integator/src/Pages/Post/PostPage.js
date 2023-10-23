@@ -27,8 +27,8 @@ export const PostPage = () => {
 
 
     const MainPosts = () => {
-        
-        console.log(posts);
+        const user = localStorage.getItem('idUser')
+
         return (
             <>
                 <Header namePage="post"/>
@@ -40,7 +40,20 @@ export const PostPage = () => {
                 <ListPost>
                     {
                         posts.map(post => {
-                            
+                            const color = {
+                                colorLike: "none",
+                                colorDislike: "none"
+                            }
+
+
+                            const interaction = post.userInteractions.find(item => {
+                                return item.userId === user
+                            })
+
+                            if(interaction){
+                                interaction.interaction === 1 ? color.colorLike = "#688A08" : color.colorDislike = "#FA5858"
+                            }
+
                             return (
                                 <Comment key={post.id}
                                     idPost={post.id}
@@ -50,6 +63,7 @@ export const PostPage = () => {
                                     numberComment={post.amountComments}
                                     comments={post.comments}
                                     likeDislike={likeDislikePost}
+                                    colorLikeDislike={color}
                                 />
                             )
                         })

@@ -6,9 +6,10 @@ import { goComment } from '../../Routes/coordinator';
 
 export const Comment = (props) => {
 
-    const { idPost, idComment, name, content, numberLike, numberComment, likeDislike } = props
-    const navigate = useNavigate()
+    const { idPost, idComment, name, content, numberLike, numberComment, likeDislike, colorLikeDislike } = props
+    const { colorLike, colorDislike } = colorLikeDislike
 
+    const navigate = useNavigate()
     let like = numberLike
     let commentNumber = numberComment
 
@@ -39,9 +40,9 @@ export const Comment = (props) => {
             <Content>{content}</Content>
             <SectionInterection>
                 <SectionLike>
-                    <Like likeDislike={likeDislike} id={idPost && idComment ? idComment : idPost} />
+                    <Like likeDislike={likeDislike} id={idPost && idComment ? idComment : idPost} color={colorLike}/>
                     <NumberLike>{like}{unitLike}</NumberLike>
-                    <DisLike likeDislike={likeDislike} id={idPost && idComment ? idComment : idPost} />
+                    <DisLike likeDislike={likeDislike} id={idPost && idComment ? idComment : idPost} color={colorDislike}/>
                 </SectionLike>
                 <CommentSection $status={idComment ? "none" : "flex"}>
                     <CommentIcon goComments={goComment} navigate={navigate} id={idPost} />

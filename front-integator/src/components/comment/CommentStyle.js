@@ -45,24 +45,26 @@ export const SectionLike = styled.section`
 `
 
 export const Like = (props) => {
-    const { likeDislike, id } = props
+    const { likeDislike, id, color } = props
     return (
         <TbArrowBigUp 
             onClick={() => likeDislike(id, true)}
             style={{fontSize: "3.5vh", border: "none", fontWeight: "100"}}
             strokeWidth={1}
+            fill={color}
         />
     )
 }
 
 
 export const DisLike = (props) => {
-    const { likeDislike, id } = props
+    const { likeDislike, id, color } = props
     return (
         <TbArrowBigDown 
             onClick={() => likeDislike(id, false)}
             style={{fontSize: "3.5vh", border: "none"}}
             strokeWidth={1}
+            fill={color}
         />
     )
 }

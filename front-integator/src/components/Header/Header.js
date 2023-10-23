@@ -10,6 +10,7 @@ export const Header = (props) => {
 
     const logout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('idUser')
         goLogin(navigate)
     }
 
