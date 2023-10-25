@@ -8,7 +8,8 @@ import { goPost, goSignup } from '../../Routes/coordinator';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
-
+import { string, object } from 'zod'
+import { ZodError } from 'zod';
 
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
@@ -19,12 +20,19 @@ export const LoginPage = () => {
     const login = async (event) => {
         event.preventDefault()
         
-        const body = {
-            email: form.email,
-            password: form.password
-        }
-
         try {
+
+            const userSchema = object({
+                email: string().email({message: "Informe um email válido"}),
+                password: string().min(5, {message: "A senha deve pussuir o mínimo de 5 caracteres."})
+            })
+    
+    
+            const body = userSchema.parse({
+                email: form.email,
+                password: form.password
+            })
+
             const result = await axios.post(
                 BASE_URL + '/users/login',
                 body
@@ -45,7 +53,12 @@ export const LoginPage = () => {
 
             if(error instanceof AxiosError){
                 alert(error.response.data)
-            }else{
+
+            }else if(error instanceof ZodError){
+                const message = JSON.parse(error.message)
+                alert(message[0].message)
+            }
+            else{
                 alert(error)
             }
         }

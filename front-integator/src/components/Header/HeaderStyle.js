@@ -16,6 +16,7 @@ export const HeaderComponent = styled.header`
     padding-left: 10vw;
     justify-content: ${props => props.$post ? stayle.post.justifyContent : "center"};
     background-color: #EDEDED;
+    box-sizing: border-box;
 `
 
 export const NavHeaderPost = styled.nav`
