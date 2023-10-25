@@ -16,12 +16,26 @@ export const CommentPage = () => {
     const navigate = useNavigate()
 
     const [form, onChange, clearForm ] = useForm({ content: "" })
+    const user = localStorage.getItem('idUser')
 
     if (posts.length > 0) {
         const post = posts.find((item) => item.id === pathParams.id)
 
         const { content, creator, like, dislike, amountComments, comments } = post
         
+        const colorPost = {
+            colorLike: "none",
+            colorDislike: "none"
+        }
+
+        const interaction = post.userInteractions.find(item => {
+            return item.userId === user
+        })
+
+        if(interaction){
+            interaction.interaction === 1 ? colorPost.colorLike = "#688A08" : colorPost.colorDislike = "#FA5858"
+        }
+
   
         return (
             <>
@@ -32,9 +46,9 @@ export const CommentPage = () => {
                         <Content>{content}</Content>
                         <SectionInterection>
                             <SectionLike>
-                                <Like likeDislike={likeDislikePost} id={pathParams.id} />
+                                <Like likeDislike={likeDislikePost} id={pathParams.id} color={colorPost.colorLike} />
                                 <NumberLike>{like - dislike >= 0 ? like - dislike : 0}</NumberLike>
-                                <DisLike likeDislike={likeDislikePost} id={pathParams.id} />
+                                <DisLike likeDislike={likeDislikePost} id={pathParams.id} color={colorPost.colorDislike}/>
                             </SectionLike>
                             <CommentSection>
                                 <CommentIcon goComments={goComment} navigate={navigate} id={post.id} />
@@ -49,6 +63,19 @@ export const CommentPage = () => {
                     <ListComment>
                         {
                             comments.map((comment) => {
+                                const color = {
+                                    colorLike: "none",
+                                    colorDislike: "none"
+                                }
+    
+                                const interaction = comment.userInteractions.find(item => {
+                                    return item.userId === user
+                                })
+    
+                                if(interaction){
+                                    interaction.like === 1 ? color.colorLike = "#688A08" : color.colorDislike = "#FA5858"
+                                }
+
                                 return (
                                     <Comment key={comment.id}
                                         idComment={comment.id}
@@ -58,6 +85,7 @@ export const CommentPage = () => {
                                         numberLike={comment.like}
                                         numberComment={comment.amountComments}
                                         likeDislike={likeDislikeComment}
+                                        colorLikeDislike={color}
                                     />
                                 )
                             })
