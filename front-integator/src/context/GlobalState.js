@@ -3,7 +3,6 @@ import { useFechtPosts } from "../hooks/useFechtPosts";
 import { PostsContext } from "./PostsContext";
 import axios, { AxiosError } from "axios";
 import { BASE_URL } from "../constants/BASEURL";
-import { getAllPosts } from "../services/getAllPosts";
 
 
 export const GlobalState = (props) => {
@@ -29,7 +28,7 @@ export const GlobalState = (props) => {
                 header
             )
 
-            setPosts(resut.data)
+            setPosts(resut.data.reverse())
 
         } catch (error) {
             console.log("Erro ao tentar setar");
@@ -54,9 +53,7 @@ export const GlobalState = (props) => {
                 header
             )
             
-            const newPosts = await getAllPosts()
-            
-            setPosts(newPosts.data)
+            await setPost()
 
         } catch (error) {
             if(error instanceof AxiosError){
@@ -95,7 +92,8 @@ export const GlobalState = (props) => {
                 header
             )
             
-            setPosts((await getAllPosts()).data)
+            await setPost()
+
         } catch (error) {
             if(error instanceof AxiosError){
                 console.log(error.response.data);

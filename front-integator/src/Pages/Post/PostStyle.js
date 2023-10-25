@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-    width: 93vw;
+    width: 92.5vw;
     padding: 3vh 5vw 3vh 5vw;
 `
 export const FormPost = styled.form`
@@ -18,7 +18,7 @@ export const InputContent = styled.textarea.attrs({autoComplete: "off", id: "con
     height: 15vh;
     vertical-align: top;
     padding-left: 4vw;
-    padding-top: 5vw;
+    padding-top: 2vh;
     padding-right: 4vw;
     resize: none;
     border-radius: 1em;

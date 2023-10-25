@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { PostsContext } from "../../context/PostsContext";
 import { Header } from "../../components/Header/Header";
-import { Main, FormComment, InputContent, ButtonPost, ListComment, SectionPost } from "./commentStyle";
+import { Main, FormComment, InputContent, ButtonComment, ListComment, SectionPost } from "./commentStyle";
 import { CommentIcon, CommentSection, Content, DisLike, Like, NameCreator, NumberComments, NumberLike, SectionInterection, SectionLike } from '../../components/comment/CommentStyle';
 import { Comment } from "../../components/comment/Comment";
 import { goComment } from "../../Routes/coordinator";
@@ -42,7 +42,7 @@ export const CommentPage = () => {
                 <Header namePage="comment"/>
                 <Main>
                     <SectionPost>
-                        <NameCreator>{creator.name}</NameCreator>
+                        <NameCreator>Enviado por: {creator.name}</NameCreator>
                         <Content>{content}</Content>
                         <SectionInterection>
                             <SectionLike>
@@ -57,8 +57,8 @@ export const CommentPage = () => {
                         </SectionInterection>
                     </SectionPost>
                     <FormComment onSubmit={async (event) => { await createComment(event, pathParams.id, form.content); clearForm()}}>
-                        <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} />
-                        <ButtonPost />
+                        <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} required/>
+                        <ButtonComment value="Responder"/>
                     </FormComment>
                     <ListComment>
                         {

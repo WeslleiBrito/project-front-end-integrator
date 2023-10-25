@@ -23,7 +23,7 @@ export const useFechtPosts = () => {
                 BASE_URL + "/post",
                 header
             ).then((response) => {
-                setInitial(response.data)
+                setInitial(response.data.reverse())
                 setLoading(false)
             }).catch((error) => {
                 if(error instanceof AxiosError){
