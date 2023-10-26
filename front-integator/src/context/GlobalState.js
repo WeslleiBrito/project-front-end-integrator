@@ -7,7 +7,7 @@ import { BASE_URL } from "../constants/BASEURL";
 
 export const GlobalState = (props) => {
 
-    const {initial, loading, error, handleSetError} = useFechtPosts()
+    const {initial, loading, error, handleSetError, handleSetLoading} = useFechtPosts()
     const [posts, setPosts] = useState([])
 
     
@@ -171,7 +171,8 @@ export const GlobalState = (props) => {
         likeDislikePost,
         likeDislikeComment,
         error,
-        handleSetError
+        handleSetError,
+        handleSetLoading
     }
 
     return(

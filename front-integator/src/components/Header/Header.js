@@ -19,12 +19,12 @@ export const Header = (props) => {
     }
 
     const configHeader = {
-        signup: <NavHeaderPost $post={page}>
+        signup: <NavHeaderPost $namePage={"signup"}>
             <MiniLogo alt='Logo labenu' src={miniLogo} />   
             <ButtonEnter onClick={() => goLogin(navigate)}>Entrar</ButtonEnter>
         </NavHeaderPost>,
 
-        post: <NavHeaderPost $post={page}>
+        post: <NavHeaderPost $namePage={"post"}>
             <MiniLogo alt='Logo labenu' src={miniLogo} />
             <ButtonLogout onClick={logout}>Logout</ButtonLogout>
         </NavHeaderPost>,
@@ -37,7 +37,7 @@ export const Header = (props) => {
     }
 
     return (
-        <HeaderComponent $post={page}>
+        <HeaderComponent $namePage={page}>
             {configHeader[page]}
         </HeaderComponent>
     )

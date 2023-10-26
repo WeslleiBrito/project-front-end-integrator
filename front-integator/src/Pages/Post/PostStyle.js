@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-    width: 92.5vw;
+    width: 100%;
     padding: 3vh 5vw 3vh 5vw;
 `
 export const FormPost = styled.form`

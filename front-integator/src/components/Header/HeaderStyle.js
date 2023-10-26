@@ -3,24 +3,26 @@ import { TbX } from "react-icons/tb";
 
 const stayle = {
     post: {
-        width: "70%", 
+        width: "calc(50% + 10vw)", 
         justifyContent: "flex-end"
     }
 }
 
 export const HeaderComponent = styled.header`
+    ${props => console.log(props.$namePage)}
     width: 100%;
     height: 6vh;
     display: flex;
     padding-right: 10vw;
     padding-left: 10vw;
-    justify-content: ${props => props.$post ? stayle.post.justifyContent : "center"};
+    justify-content: ${props => props.$namePage ? stayle.post.justifyContent : "center"};
     background-color: #EDEDED;
     box-sizing: border-box;
 `
 
 export const NavHeaderPost = styled.nav`
-    width: ${props => props.$post ? stayle.post.width : "100%"};
+    ${props => console.log(props.$namePage)}
+    width: ${props => props.$namePage ? stayle.post.width : "100%"};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,6 +31,7 @@ export const NavHeaderPost = styled.nav`
 
 export const MiniLogo = styled.img`
     height: 4vh;
+    width: 10vw;
 
 `
 

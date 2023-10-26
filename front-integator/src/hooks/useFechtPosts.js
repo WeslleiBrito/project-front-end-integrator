@@ -45,6 +45,9 @@ export const useFechtPosts = () => {
     const handleSetError = () => {
         setError(!error)
     }
+    const handleSetLoading = () => {
+        setError(!loading)
+    }
 
-    return {initial, loading, error, handleSetError}
+    return {initial, loading, error, handleSetError, handleSetLoading}
 }

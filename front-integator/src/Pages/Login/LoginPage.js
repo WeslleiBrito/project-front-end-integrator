@@ -15,7 +15,7 @@ export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
     const navigate = useNavigate()
     const context = useContext(PostsContext)
-    const { error, handleSetError, setPost } = context
+    const { error, handleSetError, setPost, handleSetLoading } = context
 
     const login = async (event) => {
         event.preventDefault()
