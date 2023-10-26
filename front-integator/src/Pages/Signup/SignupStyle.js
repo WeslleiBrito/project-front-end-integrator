@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-    width: 92vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    padding-left: 6vw;
+    padding-right: 6vw;
 `
 
 export const Title = styled.p`
@@ -14,7 +16,7 @@ export const Title = styled.p`
     font-weight: 700;
     line-height: normal;
     margin-top: 3vh;
-    padding-left: 3vw;
+    width: 100%;
 `
 
 export const FormSignup = styled.form`
@@ -26,9 +28,8 @@ export const FormSignup = styled.form`
 `
 
 export const InputNickname = styled.input.attrs({ type: "text" })`
-    width: 90%;
+    width: 100%;
     height: 3.75rem;
-    padding-left: 3vw;
     color: #000;
     font-size: 1rem;
     font-style: normal;
@@ -38,12 +39,12 @@ export const InputNickname = styled.input.attrs({ type: "text" })`
     border-radius: 0.25rem;
     border: 1px solid #D5D8DE;
     background: #FFF;
+    padding-left: 3vw;
 `
 
 export const InputEmail = styled.input.attrs({ type: "email" })`
-    width: 90%;
+    width: 100%;
     height: 3.75rem;
-    padding-left: 3vw;
     color: #000;
     font-size: 1rem;
     font-style: normal;
@@ -54,12 +55,12 @@ export const InputEmail = styled.input.attrs({ type: "email" })`
     border: 1px solid #D5D8DE;
     background: #FFF;
     margin-top: 2vh;
+    padding-left: 3vw;
 `
 
 export const InputPassword = styled.input.attrs({ type: "password" })`
-    width: 90%;
+    width: 100%;
     height: 3.75rem;
-    padding-left: 3vw;
     color: #000;
     font-size: 1rem;
     font-style: normal;
@@ -70,10 +71,11 @@ export const InputPassword = styled.input.attrs({ type: "password" })`
     border: 1px solid #D5D8DE;
     background: #FFF;
     margin-top: 2vh;
+    padding-left: 3vw;
 `
 
 export const ContractText = styled.p`
-    width: 90%;
+    width: 100%;
     height: 3.75rem;
     color: #000;
     font-family: Noto Sans;
@@ -93,7 +95,7 @@ export const Link = styled.a`
     line-height: normal;
 `
 export const SectionTerms = styled.section`
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     height: 6vh;
@@ -115,7 +117,7 @@ export const LableCheck = styled.label`
 `
 
 export const Register = styled.button.attrs({ type: "submit" })`
-    width: 90%;
+    width: 100%;
     display: flex;
     padding: 0.8125rem 8.3125rem;
     justify-content: center;

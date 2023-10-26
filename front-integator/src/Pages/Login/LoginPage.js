@@ -1,4 +1,4 @@
-import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount} from './LoginStyle'
+import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase} from './LoginStyle'
 import React from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
@@ -68,9 +68,10 @@ export const LoginPage = () => {
         
         <Main>
             <Logo alt='logo-labenu' src={logoLabenu}/>
-            <Title>O projeto de rede social da Labenu</Title>
+            <Title>LabEddit</Title>
+            <Phrase>O projeto de rede social da Labenu</Phrase>
             <FormLogin onSubmit={login}>
-                <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange} required/>
+                <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange} required autoComplete='off'/>
                 <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off' required/>
                 <ButtonContinue>Continuar</ButtonContinue>
             </FormLogin>
