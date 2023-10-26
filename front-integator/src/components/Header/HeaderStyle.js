@@ -3,13 +3,13 @@ import { TbX } from "react-icons/tb";
 
 const stayle = {
     post: {
-        width: "50vw", 
+        width: "60%", 
         justifyContent: "flex-end"
     }
 }
 
 export const HeaderComponent = styled.header`
-    width: 100vw;
+    width: 92vw;
     height: 6vh;
     display: flex;
     padding-right: 10vw;

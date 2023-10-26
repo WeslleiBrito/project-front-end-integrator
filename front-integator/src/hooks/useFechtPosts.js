@@ -10,15 +10,15 @@ export const useFechtPosts = () => {
 
     useEffect(() => {
 
+        const token = localStorage.getItem('token')
         const getPosts = async () => {
-            const token = localStorage.getItem('token')
 
             const header = {
                 headers: {
                     authorization: token
                 }
             }
-    
+            
             await axios.get(
                 BASE_URL + "/post",
                 header
@@ -35,8 +35,11 @@ export const useFechtPosts = () => {
 
             
         }
+        
+        if(token){
+            getPosts()
+        }
 
-        getPosts()
     }, [])
 
     const handleSetError = () => {
