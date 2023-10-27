@@ -7,6 +7,7 @@ import {BASE_URL} from '../../constants/BASEURL.js'
 import { useNavigate } from 'react-router-dom';
 import { goLogin } from '../../Routes/coordinator';
 
+
 export const SignupPage = () => {
 
     const [form, onChange] = useForm({ name: "", email: "", password: ""})
@@ -33,9 +34,8 @@ export const SignupPage = () => {
         } catch (error) {
 
             if(error instanceof AxiosError){
-                error.response.data.forEach(element => {
-                    alert(element.message)
-                });
+                alert(error.response.data)
+                
             }else{
                 alert(error)
             }
