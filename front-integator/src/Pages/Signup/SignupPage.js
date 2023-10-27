@@ -35,7 +35,6 @@ export const SignupPage = () => {
 
             if(error instanceof AxiosError){
                 alert(error.response.data)
-                
             }else{
                 alert(error)
             }
