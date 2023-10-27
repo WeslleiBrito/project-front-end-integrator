@@ -12,7 +12,7 @@ import { Header } from '../../components/Header/Header'
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
-    const { posts, loading, createPost, likeDislikePost, error } = context
+    const { posts, createPost, likeDislikePost, error } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
     const [form, onChange, clearForm] = useForm({ content: "" })
@@ -28,7 +28,6 @@ export const PostPage = () => {
 
     const MainPosts = () => {
         const user = localStorage.getItem('idUser')
-
         return (
             <>
                 <Header namePage="post"/>
@@ -78,7 +77,7 @@ export const PostPage = () => {
 
     return (
         <>
-            {loading ? <></> : MainPosts()}
+            {posts ? MainPosts() : <></>}
         </>
     )
 }

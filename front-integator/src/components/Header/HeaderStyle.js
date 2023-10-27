@@ -9,7 +9,6 @@ const stayle = {
 }
 
 export const HeaderComponent = styled.header`
-    ${props => console.log(props.$namePage)}
     width: 100%;
     height: 6vh;
     display: flex;
@@ -21,7 +20,6 @@ export const HeaderComponent = styled.header`
 `
 
 export const NavHeaderPost = styled.nav`
-    ${props => console.log(props.$namePage)}
     width: ${props => props.$namePage ? stayle.post.width : "100%"};
     display: flex;
     justify-content: space-between;
