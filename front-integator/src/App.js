@@ -5,12 +5,16 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   return (
-    <ChakraProvider>
+    <>
       <GlobalStyle/>
-      <GlobalState>
-        <Router/>
-      </GlobalState>
-    </ChakraProvider>
+      <ChakraProvider>
+        <GlobalState>
+          <Router/>
+        </GlobalState>
+      </ChakraProvider>
+    </>
+    
+
   );
 }
 
