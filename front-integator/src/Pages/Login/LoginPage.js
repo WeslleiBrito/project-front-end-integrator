@@ -1,5 +1,5 @@
 import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase} from './LoginStyle'
-import React from 'react';
+import React, { useState } from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
 import { BASE_URL } from '../../constants/BASEURL';
@@ -10,16 +10,21 @@ import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
 import { string, object } from 'zod'
 import { ZodError } from 'zod';
+import { CircularProgress } from '@chakra-ui/react'
+
 
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
+    const [loadingSpiner, setLoadingSpiner] = useState(false)
+
     const navigate = useNavigate()
     const context = useContext(PostsContext)
     const { error, handleSetError, setPost } = context
 
     const login = async (event) => {
         event.preventDefault()
-        
+        setLoadingSpiner(!loadingSpiner)
+
         try {
 
             const userSchema = object({
@@ -49,7 +54,6 @@ export const LoginPage = () => {
             goPost(navigate)
 
         } catch (error) {
-
             if(error instanceof AxiosError){
                 alert(error.response.data)
 
@@ -60,7 +64,11 @@ export const LoginPage = () => {
             else{
                 alert(error)
             }
+        }finally {
+            setLoadingSpiner(!loadingSpiner)
         }
+
+        
     }
     
     return(
@@ -72,7 +80,7 @@ export const LoginPage = () => {
             <FormLogin onSubmit={login}>
                 <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange} required autoComplete='off'/>
                 <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off' required/>
-                <ButtonContinue>Continuar</ButtonContinue>
+                <ButtonContinue>Continuar {loadingSpiner ? <CircularProgress isIndeterminate color='black' size={"1.75rem"}/> : ""}</ButtonContinue>
             </FormLogin>
             <ButtonCreateAccount onClick={() => {goSignup(navigate)}}>Crie uma conta!</ButtonCreateAccount>
         </Main>

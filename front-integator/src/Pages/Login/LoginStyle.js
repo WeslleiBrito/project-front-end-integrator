@@ -102,6 +102,7 @@ export const ButtonContinue = styled.button.attrs({type: 'submit'})`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    vertical-align: middle;
 `
 
 export const ButtonCreateAccount = styled.button`
