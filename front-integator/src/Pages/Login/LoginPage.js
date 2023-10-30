@@ -1,5 +1,5 @@
 import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase, ContainerPassword, Eye} from './LoginStyle'
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
 import { BASE_URL } from '../../constants/BASEURL';
@@ -25,9 +25,6 @@ export const LoginPage = () => {
         setStatusEye(!statusEye)
     }
 
-    useEffect(() => {
-        
-    })
     const login = async (event) => {
         event.preventDefault()
         setLoadingSpiner(true)
