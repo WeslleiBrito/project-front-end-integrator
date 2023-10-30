@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import { TbArrowBigUp, TbArrowBigDown } from "react-icons/tb";
-import { BiMessage } from "react-icons/bi";
+import { BiMessage, BiShow, BiHide } from "react-icons/bi";
 
 
 export const Item = styled.li`
@@ -103,3 +103,15 @@ export const NumberLike = styled.p`
 export const NumberComments = styled.p`
     font-size: 2vh;
 `
+export const Eye = ({status, setStatus}) => {
+
+    if(status){
+        return(
+            <BiShow onClick={() => setStatus()}/>
+        )
+    }
+
+    return(
+        <BiHide onClick={() => setStatus()}/>
+    )
+}

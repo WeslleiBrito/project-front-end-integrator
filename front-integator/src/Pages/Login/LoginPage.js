@@ -1,4 +1,4 @@
-import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase} from './LoginStyle'
+import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase, ContainerPassword, Eye} from './LoginStyle'
 import React, { useState } from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
@@ -20,6 +20,11 @@ export const LoginPage = () => {
     const navigate = useNavigate()
     const context = useContext(PostsContext)
     const { error, handleSetError, setPost } = context
+    const [statusEye, setStatusEye] = useState(false)
+
+    const setStatus = () => {
+        setStatusEye(!statusEye)
+    }
 
     const login = async (event) => {
         event.preventDefault()
@@ -79,7 +84,10 @@ export const LoginPage = () => {
             <Phrase>O projeto de rede social da Labenu</Phrase>
             <FormLogin onSubmit={login}>
                 <InputEmail placeholder='E-mail' name='email' value={form.name} onChange={onChange} required autoComplete='off'/>
-                <InputPassword placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off' required/>
+                <ContainerPassword>
+                    <InputPassword type={statusEye ? 'text' : "password"} placeholder='Senha' name='password' value={form.password} onChange={onChange} autoComplete='off' autoCapitalize="none"required/>
+                    <Eye status={statusEye} setStatus={setStatus}/>
+                </ContainerPassword>
                 <ButtonContinue>Continuar {loadingSpiner ? <CircularProgress isIndeterminate color='black' size={"1.75rem"}/> : ""}</ButtonContinue>
             </FormLogin>
             <ButtonCreateAccount onClick={() => {goSignup(navigate)}}>Crie uma conta!</ButtonCreateAccount>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BiShow, BiHide } from "react-icons/bi";
 
 
 export const Main = styled.main`
@@ -67,8 +68,8 @@ export const InputEmail = styled.input.attrs({type: "email"})`
     width: 100%;
 `
 
-export const InputPassword = styled.input.attrs({type: "password"})`
-    height: 3.75rem;
+export const InputPassword = styled.input`
+    height: 100%;
     flex-shrink: 0;
     color: #000;
     font-family: Noto Sans;
@@ -76,14 +77,24 @@ export const InputPassword = styled.input.attrs({type: "password"})`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: none;
+    outline: 0;
+    
+    
+`
+export const ContainerPassword = styled.div`
+    height: 3.75rem;
     padding-left: 3vw;
+    padding-right: 3vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 0.25rem;
     border: 1px solid #D5D8DE;
     margin-top: 1vh;
     width: 100%;
     margin-bottom: 6vh;
 `
-
 export const ButtonContinue = styled.button.attrs({type: 'submit'})`
     height: 6vh;
     background: linear-gradient(to right, #FF6489, #F9B24E );
@@ -123,3 +134,16 @@ export const ButtonCreateAccount = styled.button`
     border: 1px solid #FE7E02;
     margin-top: 2vh;
 `
+
+export const Eye = ({status, setStatus}) => {
+
+if(status){
+    return(
+        <BiShow onClick={() => setStatus()}  />
+    )
+}
+
+return(
+    <BiHide onClick={() => setStatus()} />
+)
+}
