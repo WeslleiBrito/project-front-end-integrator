@@ -1,5 +1,5 @@
 import {Main, Logo, Title, FormLogin, InputEmail, InputPassword, ButtonContinue, ButtonCreateAccount, Phrase, ContainerPassword, Eye} from './LoginStyle'
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import logoLabenu from '../../assets/img/logo-labenu.svg'
 import axios, { AxiosError } from "axios";
 import { BASE_URL } from '../../constants/BASEURL';
@@ -15,11 +15,10 @@ import { CircularProgress } from '@chakra-ui/react'
 
 export const LoginPage = () => {
     const [form, onChange] = useForm({ email: "", password: ""})
-    const [loadingSpiner, setLoadingSpiner] = useState(false)
 
     const navigate = useNavigate()
     const context = useContext(PostsContext)
-    const { error, handleSetError, setPost } = context
+    const { error, handleSetError, setPost, loadingSpiner, setLoadingSpiner } = context
     const [statusEye, setStatusEye] = useState(false)
 
     const setStatus = () => {
@@ -28,7 +27,7 @@ export const LoginPage = () => {
 
     const login = async (event) => {
         event.preventDefault()
-        setLoadingSpiner(!loadingSpiner)
+        setLoadingSpiner(true)
 
         try {
 
@@ -69,11 +68,10 @@ export const LoginPage = () => {
             else{
                 alert(error)
             }
-        }finally {
-            setLoadingSpiner(!loadingSpiner)
+        }finally{
+            setLoadingSpiner(false)
         }
 
-        
     }
     
     return(

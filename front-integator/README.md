@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Projeto Labeddit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo](./src/assets/readme/pokemon-logo-0.svg)
 
-## Available Scripts
+Projeto de conclusão do módulo FullStack Labenu.
 
-In the project directory, you can run:
+## Indice
 
-### `npm start`
+- <a href="#funcionalidades">Funcionalidades do projeto</a>
+- <a href="#layout">Layout</a>
+- <a href="#demonstração">Demonstração</a>
+- <a href="#como-rodar-este-projeto">Como rodar este projeto</a>
+- <a href="#tecnologias-utilizadas">Tecnolgias utilizadas</a>
+- <a href="#pessoas-autoras">Pessoas autoras</a>
+- <a href="#próximos-passos">Próximos passos</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Funcionalidades
+- [x] Login/Logout
+- [x] Signup
+- [x] Post
+- [x] Comment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Layout
+- ### Login
+![Login](./src/assets/readme/home_clip%20-%20Made%20with%20Clipchamp.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ### Pokédex
+![Pokédex](./src/assets/readme/Pokedex%20-%20Made%20with%20Clipchamp.gif)
 
-### `npm run build`
+- ### Detalhes
+![Detalhes](./src/assets/readme/Detalhes%20-%20Made%20with%20Clipchamp.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demonstração
+- [Link do Projeto](https://pokedex-wesllei.surge.sh/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como rodar este projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- ### Comandos
+```bash
+# Clone este repositório
+$ git clone linkDoRepositorio
 
-### `npm run eject`
+# Acesse página do projeto no seu terminal
+$ cd projeto-react-apis/pokedex
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Instale as dependências
+$ npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Execute a apliacação
+$ npm run start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# A aplicação será iniciada na porta 3000, acesse pelo navegador: http://localhost:3000
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tecnologias Utilizadas
+1. [React](https://react.dev/learn)
+2. [React Router](https://reactrouter.com/en/main)
+3. [Axios](https://axios-http.com/ptbr/docs/intro)
+4. [styled-components](https://styled-components.com/)
+5. [Chakra-ui](https://chakra-ui.com/)
 
-## Learn More
+## Pessoas Autoras
+![foto](./src/assets/readme/foto.png)
+```
+```
+[Linkedin](https://www.linkedin.com/in/wesllei-brito-9222b9202/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Próximos passos
+- [ ] Tornar a aplicação responsiva

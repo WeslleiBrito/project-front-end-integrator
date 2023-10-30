@@ -1,21 +1,27 @@
 import {Main, Title, FormSignup, InputNickname, InputEmail, InputPassword, ContractText, Link, SectionTerms, CheckTerms, LableCheck, Register} from './SignupStyle'
-import React from 'react';
+import React, { useContext } from 'react';
 import {Header} from '../../components/Header/Header'
 import { useForm } from '../../hooks/useForm'
 import axios, { AxiosError } from "axios";
 import {BASE_URL} from '../../constants/BASEURL.js'
 import { useNavigate } from 'react-router-dom';
 import { goLogin } from '../../Routes/coordinator';
+import { CircularProgress } from '@chakra-ui/react'
+import { PostsContext } from '../../context/PostsContext';
 
 
 export const SignupPage = () => {
 
     const [form, onChange] = useForm({ name: "", email: "", password: ""})
+    const context = useContext(PostsContext)
+    const { loadingSpiner, setLoadingSpiner } = context
+
     const navigate = useNavigate()
 
     const signup = async (event) => {
         event.preventDefault()
-        
+        setLoadingSpiner(true)
+
         const body = {
             name: form.name,
             email: form.email,
@@ -39,7 +45,10 @@ export const SignupPage = () => {
                 alert(error)
             }
             
+        }finally {
+            setLoadingSpiner(false)
         }
+
     }
 
     return(
@@ -60,7 +69,7 @@ export const SignupPage = () => {
                         <CheckTerms id='checkTerms'/>
                         <LableCheck htmlFor='checkTerms'>Eu concordo em receber emails sobre coisas legais no Labeddit</LableCheck>
                     </SectionTerms>
-                    <Register>Cadastrar</Register>
+                    <Register>Cadastrar {loadingSpiner ? <CircularProgress isIndeterminate color='black' size={"1.75rem"}/> : ""}</Register>
                 </FormSignup>
             </Main>
         </>

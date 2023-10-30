@@ -9,7 +9,7 @@ export const GlobalState = (props) => {
 
     const {initial, loading, error, handleSetError, handleSetLoading} = useFechtPosts()
     const [posts, setPosts] = useState([])
-
+    const [loadingSpiner, setLoadingSpiner] = useState(false)
     
     useEffect(() => {
         setPosts(initial)
@@ -172,7 +172,9 @@ export const GlobalState = (props) => {
         likeDislikeComment,
         error,
         handleSetError,
-        handleSetLoading
+        handleSetLoading,
+        loadingSpiner,
+        setLoadingSpiner
     }
 
     return(
