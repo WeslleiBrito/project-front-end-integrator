@@ -24,9 +24,14 @@ export const InputContent = styled.textarea.attrs({autoComplete: "off", id: "con
     border-radius: 1em;
     border: none;
     background-color: #EDEDED;
-    font-size: 1.4em;
+    font-size: 1em;
 `
-export const ButtonPost = styled.input.attrs({type: "submit"})`
+
+export const ListPost = styled.ul`
+    margin-top: 1vh;
+`
+
+export const ButtonPost = styled.button.attrs({type: 'submit'})`
     margin-top: 1.5vh;
     height: 5vh;
     background: linear-gradient(to right, #FF6489, #F9B24E );
@@ -36,8 +41,4 @@ export const ButtonPost = styled.input.attrs({type: "submit"})`
     font-weight: 700;
     color: #FFFFFF;
 `
-export const ListPost = styled.ul`
-    margin-top: 1vh;
-`
-
 

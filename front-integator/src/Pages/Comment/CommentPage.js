@@ -8,11 +8,12 @@ import { Comment } from "../../components/comment/Comment";
 import { goComment } from "../../Routes/coordinator";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "../../hooks/useForm";
+import { CircularProgress } from '@chakra-ui/react'
 
 export const CommentPage = () => {
     const pathParams = useParams();
     const context = useContext(PostsContext)
-    const { posts, createComment, likeDislikePost, likeDislikeComment } = context
+    const { posts, createComment, likeDislikePost, likeDislikeComment, loadingSpiner, setLoadingSpiner } = context
     const navigate = useNavigate()
 
     const [form, onChange, clearForm ] = useForm({ content: "" })
@@ -56,9 +57,9 @@ export const CommentPage = () => {
                             </CommentSection>
                         </SectionInterection>
                     </SectionPost>
-                    <FormComment onSubmit={async (event) => { await createComment(event, pathParams.id, form.content); clearForm()}}>
+                    <FormComment onSubmit={async (event) => { setLoadingSpiner(true); await createComment(event, pathParams.id, form.content); setLoadingSpiner(false); clearForm()}}>
                         <InputContent placeholder="Adicionar comentário" id={post.id} name="content" onChange={onChange} value={form.content} required/>
-                        <ButtonComment value="Responder"/>
+                        <ButtonComment>Enviar {loadingSpiner ? <CircularProgress isIndeterminate color='black' size={"1.75rem"}/> : ""}</ButtonComment>
                     </FormComment>
                     <ListComment>
                         {
