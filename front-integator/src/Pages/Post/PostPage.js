@@ -7,12 +7,12 @@ import { useForm } from '../../hooks/useForm';
 import { useContext } from "react";
 import { PostsContext } from '../../context/PostsContext';
 import { Header } from '../../components/Header/Header'
-
+import { CircularProgress } from '@chakra-ui/react'
 
 export const PostPage = () => {
 
     const context = useContext(PostsContext)
-    const { posts, createPost, likeDislikePost, error } = context
+    const { posts, createPost, likeDislikePost, error, loadingSpiner, setLoadingSpiner } = context
     const token = localStorage.getItem('token')
     const navigate = useNavigate()
     const [form, onChange, clearForm] = useForm({ content: "" })
@@ -32,9 +32,9 @@ export const PostPage = () => {
             <>
                 <Header namePage="post"/>
                 <Main>
-                <FormPost onSubmit={async (event) => { await createPost(event, form.content); clearForm()}}>
+                <FormPost onSubmit={async (event) => { setLoadingSpiner(true); await createPost(event, form.content); setLoadingSpiner(false); clearForm()}}>
                     <InputContent placeholder='Escreva seu post...' value={form.content} onChange={onChange} required />
-                    <ButtonPost value={"Postar"} />
+                    <ButtonPost>Postar {loadingSpiner ? <CircularProgress isIndeterminate color='black' size={"1.75rem"}/> : ""}</ButtonPost>
                 </FormPost>
                 <ListPost>
                     {

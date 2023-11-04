@@ -5,7 +5,6 @@ export const Main = styled.main`
    padding: 3vh 5vw 3vh 5vw;
    display: flex;
    flex-direction: column;
-   justify-content: ce
 `
 
 export const SectionPost = styled.section`
@@ -38,10 +37,11 @@ export const InputContent = styled.textarea.attrs({type: "text", autoComplete: "
     border-radius: 1em;
     border: none;
     background-color: #EDEDED;
-    font-size: 1.4em;
+    font-size: 1.2em;
     width: 100%;
 `
-export const ButtonComment = styled.input.attrs({type: "submit"})`
+
+export const ButtonComment = styled.button.attrs({type: 'submit'})`
     margin-top: 1.5vh;
     height: 5vh;
     background: linear-gradient(to right, #FF6489, #F9B24E );

@@ -1,7 +1,5 @@
 # Projeto Labeddit
 
-![Logo](./src/assets/readme/pokemon-logo-0.svg)
-
 Projeto de conclusão do módulo FullStack Labenu.
 
 ## Indice
@@ -15,7 +13,7 @@ Projeto de conclusão do módulo FullStack Labenu.
 - <a href="#próximos-passos">Próximos passos</a>
 
 ## Funcionalidades
-- [x] Login/Logout
+- [x] Login
 - [x] Signup
 - [x] Post
 - [x] Comment
@@ -23,16 +21,19 @@ Projeto de conclusão do módulo FullStack Labenu.
 
 ## Layout
 - ### Login
-![Login](./src/assets/readme/home_clip%20-%20Made%20with%20Clipchamp.gif)
+![Login](./src/assets/documentation/login.gif)
 
-- ### Pokédex
-![Pokédex](./src/assets/readme/Pokedex%20-%20Made%20with%20Clipchamp.gif)
+- ### Signup
+![Signup](./src/assets/documentation/signup.gif)
 
-- ### Detalhes
-![Detalhes](./src/assets/readme/Detalhes%20-%20Made%20with%20Clipchamp.gif)
+- ### Post
+![Detalhes](./src/assets/documentation/post.gif)
+
+- ### Comment
+![Detalhes](./src/assets/documentation/comment.gif)
 
 ## Demonstração
-- [Link do Projeto](https://pokedex-wesllei.surge.sh/)
+- [Link do Projeto](https://main.d1gu6j01wnb25f.amplifyapp.com/)
 
 ## Como rodar este projeto
 
@@ -41,8 +42,8 @@ Projeto de conclusão do módulo FullStack Labenu.
 # Clone este repositório
 $ git clone linkDoRepositorio
 
-# Acesse página do projeto no seu terminal
-$ cd projeto-react-apis/pokedex
+# Acesse a pasta do projeto no seu terminal
+$ cd project-front-end-integrator/front-integator
 
 # Instale as dependências
 $ npm install
@@ -61,10 +62,14 @@ $ npm run start
 5. [Chakra-ui](https://chakra-ui.com/)
 
 ## Pessoas Autoras
-![foto](./src/assets/readme/foto.png)
+<img src="./src/assets/documentation/foto.png" width=150vh/>
+
+
 ```
 ```
 [Linkedin](https://www.linkedin.com/in/wesllei-brito-9222b9202/)
 
 ## Próximos passos
-- [ ] Tornar a aplicação responsiva
+- [ ] Tornar a aplicação responsiva para web
+- [ ] Incluir um chat
+- [ ] Incluir post com imagens

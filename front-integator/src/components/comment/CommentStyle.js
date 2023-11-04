@@ -11,7 +11,7 @@ export const Item = styled.li`
     display: flex;
     flex-direction: column;
     padding: 1vh;
-    height: 20vh;
+    height: 19vh;
     margin-bottom: 1vh;
     
 `
@@ -24,7 +24,7 @@ export const NameCreator = styled.p`
 export const Content = styled.p`
     color: #000000;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1rem;
     height: 10vh;
     overflow: auto;
     margin-bottom: 1vh;

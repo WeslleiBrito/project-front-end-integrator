@@ -70,6 +70,7 @@ export const InputEmail = styled.input.attrs({type: "email"})`
 
 export const InputPassword = styled.input`
     height: 100%;
+    width: 75vw;
     flex-shrink: 0;
     color: #000;
     font-family: Noto Sans;
